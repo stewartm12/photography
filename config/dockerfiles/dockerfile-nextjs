@@ -1,0 +1,22 @@
+# Dockerfile-nextjs
+
+# Use Node.js base image
+FROM node:23-alpine
+
+# Set the working directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json
+COPY services/web/package*.json ./
+
+# Install dependencies only if missing
+RUN npm install || npm ci
+
+# Copy the rest of the Next.js application files
+COPY services/web ./
+
+# Expose port for Next.js server
+EXPOSE 3001
+
+# Start Next.js in development mode
+CMD ["npm", "run", "dev"]
