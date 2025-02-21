@@ -55,5 +55,6 @@ group :test do
   gem 'shoulda-matchers'
 end
 
+gem 'aws-sdk-s3'
 gem 'graphql', '~> 2.4'
 gem 'sprockets-rails'

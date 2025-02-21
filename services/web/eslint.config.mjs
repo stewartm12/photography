@@ -16,4 +16,4 @@ const configs = [
   ...compat.extends("next/typescript"),
 ]
 
-export default configs
+export default configs;
