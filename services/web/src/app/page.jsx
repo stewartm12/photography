@@ -1,10 +1,12 @@
-import Link from 'next/link';
+import SlideShow from './components/slideShow';
+import { getHighlightedPhotos } from '@/graphql/queries/photo';
 
 export default async function Home() {
+  const featuredPhotos = await getHighlightedPhotos();
+
   return (
     <div>
-      <span>PICS BY TORI</span>
-      <Link href="/categories">Categories </Link>
+      <SlideShow photos={featuredPhotos.photos} />
     </div>
   );
 }

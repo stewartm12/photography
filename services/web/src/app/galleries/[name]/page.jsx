@@ -4,7 +4,7 @@ import Image from "next/image";
 export function getCategoryData(name) {
 	return getPhotosByCategory(name);
 }
-export default async function CategoryPage({ params }) {
+export default async function Gallery({ params }) {
 	const { name } = await params;
 
 	const s3Image = (file_key) => {

@@ -1,12 +1,8 @@
 import { getCategories } from "@/graphql/queries/category";
 import Link from "next/link";
 
-export function getAllCategories() {
-  return getCategories();
-}
-
-export default async function Home() {
-  const data = await getAllCategories();
+export default async function Galleries() {
+  const data = await getCategories();
 
   return (
     <div>
@@ -14,7 +10,7 @@ export default async function Home() {
       <ul>
         {data.categories.map((category) => (
           <li key={category.id}>
-            <Link href={`/categories/${category.name}`}>{category.name}</Link>
+            <Link href={`/galleries/${encodeURIComponent(category.name)}`}>{category.name}</Link>
           </li>
         ))}
       </ul>
