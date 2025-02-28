@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_22_154949) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_28_200335) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -50,6 +50,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_22_154949) do
     t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
+  create_table "locations", force: :cascade do |t|
+    t.string "address", null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["latitude", "longitude"], name: "index_locations_on_latitude_and_longitude"
+  end
+
   create_table "photos", force: :cascade do |t|
     t.string "file_key"
     t.bigint "category_id", null: false
@@ -62,7 +71,33 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_22_154949) do
     t.index ["highlighted"], name: "index_photos_on_highlighted"
   end
 
+  create_table "reservation_locations", force: :cascade do |t|
+    t.bigint "reservation_id", null: false
+    t.bigint "location_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_reservation_locations_on_location_id"
+    t.index ["reservation_id", "location_id"], name: "index_reservation_locations_on_reservation_and_location", unique: true
+    t.index ["reservation_id"], name: "index_reservation_locations_on_reservation_id"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.string "full_name"
+    t.string "email"
+    t.datetime "preferred_date_time"
+    t.integer "number_of_participants"
+    t.text "additional_notes"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "service_details"
+    t.index ["category_id"], name: "index_reservations_on_category_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "photos", "categories"
+  add_foreign_key "reservation_locations", "locations"
+  add_foreign_key "reservation_locations", "reservations"
+  add_foreign_key "reservations", "categories"
 end

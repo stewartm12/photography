@@ -4,6 +4,6 @@ module Types
     field :file_key, String, null: false
     field :category, CategoryType, null: false
     field :highlighted, Boolean, null: false
-    field :highlighted_order, Integer, null: true
+    field :highlighted_order, Integer
   end
 end

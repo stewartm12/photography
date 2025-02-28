@@ -1,9 +1,6 @@
 import { getPhotosByCategory } from "@/graphql/queries/category";
 import Image from "next/image";
 
-export function getCategoryData(name) {
-	return getPhotosByCategory(name);
-}
 export default async function Gallery({ params }) {
 	const { name } = await params;
 
@@ -20,7 +17,7 @@ export default async function Gallery({ params }) {
 	/>
 	}
 
-	const image_data = await getCategoryData(name);
+	const image_data = await getPhotosByCategory(name);
 
 	return (
 		<div>

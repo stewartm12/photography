@@ -1,6 +1,17 @@
 import { gql } from "@apollo/client";
 import { getClient } from "@/lib/apolloClient";
 
+const galleryCategoryMap = {
+  "individual-and-family-portraits": "Individual & Family Portraits",
+  "engagement-and-couples-photography": "Engagement & Couples Photography",
+  "corporate-and-commercial-photography": "Corporate & Commercial Photography",
+  "product-photography": "Product Photography",
+  "pet-and-animal-photography": "Pet & Animal Photography",
+  "graduation-and-senior-portraits": "Graduation & Senior Portraits",
+  "sport-photography": "Sport Photography"
+};
+
+
 export async function getCategories() {
   const client = getClient();
 
@@ -18,9 +29,9 @@ export async function getCategories() {
   return data;
 }
 
-export async function getCategory(name) {
+export async function getCategory(urlSegment) {
   const client = getClient();
-  const categoryName = decodeURIComponent(name);
+  const categoryName = galleryCategoryMap[urlSegment]
 
   const { data } = await client.query({
     query: gql`
@@ -37,11 +48,11 @@ export async function getCategory(name) {
   return data;
 }
 
-export async function getPhotosByCategory(name) {
+export async function getPhotosByCategory(urlSegment) {
   const client = getClient();
-  const categoryName = decodeURIComponent(name);
+  const categoryName = galleryCategoryMap[urlSegment]
 
-  const { data } = await client.query({
+  const response = await client.query({
     query: gql`
       query getPhotosByCategory($categoryName: String!) {
         categories(name: $categoryName) {
@@ -57,5 +68,5 @@ export async function getPhotosByCategory(name) {
     variables: { categoryName },
   });
 
-  return data;
+  return response.data;
 }
