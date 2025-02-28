@@ -18,3 +18,9 @@ Style/StringLiterals:
 
 Layout/SpaceInsideArrayLiteralBrackets:
   EnforcedStyle: no_space
+
+Style/WordArray:
+  Enabled: true
+
+Style/SymbolArray:
+  Enabled: true

@@ -23,8 +23,9 @@ module Types
 
     # CategoryType
     field :categories, resolver: Resolvers::CategoryResolver
-
     # PhotoType
     field :photos, resolver: Resolvers::PhotoResolver
+    #LocationType
+    field :locations, resolver: Resolvers::LocationResolver
   end
 end
