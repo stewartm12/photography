@@ -25,7 +25,7 @@ module Types
     field :categories, resolver: Resolvers::CategoryResolver
     # PhotoType
     field :photos, resolver: Resolvers::PhotoResolver
-    #LocationType
-    field :locations, resolver: Resolvers::LocationResolver
+    # LocationType
+    field :autocomplete_location, resolver: Resolvers::AutocompleteLocationResolver
   end
 end

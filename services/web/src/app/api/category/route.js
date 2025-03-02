@@ -8,7 +8,7 @@ export async function POST(request) {
     const formattedParams = {
       fullName: params.fullName,
       email: params.email,
-      numberOfParticipants: params.numberOfParticipants,
+      numberOfParticipants: parseInt(params.numberOfParticipants),
       additionalNotes: params.additionalNotes,
       serviceDetails: params.serviceDetails,
       categoryId: params.categoryId
@@ -20,9 +20,9 @@ export async function POST(request) {
 
     if (params.displayLocation) {
       formattedParams.location = {
-        address: params.locationAddress,
-        latitude: Math.random(), // Will implement coordinates in another PR
-        longitude: Math.random() // Will implement coordinates in another PR
+        address: params.address,
+        latitude:  params.latitude,
+        longitude:  params.longitude,
       };
     }
 

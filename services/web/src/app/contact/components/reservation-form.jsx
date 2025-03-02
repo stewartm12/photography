@@ -9,13 +9,13 @@ import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Label } from "@/components/ui/label"
 import { useReservation } from "@/context/reservation-context";
-import { Toaster } from "@/components/ui/sonner"
 import { toast } from "sonner"
 import { CalendarIcon, CheckCircle } from "lucide-react"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Calendar } from "@/components/ui/calendar"
 import { format } from "date-fns"
 import { cn } from "@/lib/utils"
+import LocationAddress from './location-address';
 // import CategoryDetailsForm from "./category-details-form" // Include when we need to ask more information
 
 export default function ReservationForm() {
@@ -51,7 +51,7 @@ export default function ReservationForm() {
 
   const handleTimeChange = e => {
     setTime(e.target.value)
-    debugger
+
     if (date) {
       const dateTimeString = `${format(date, "yyyy-MM-dd")}T${e.target.value}:00`
       setFormData((prev) => ({ ...prev, preferredDateTime: dateTimeString }))
@@ -87,10 +87,11 @@ export default function ReservationForm() {
           numberOfParticipants: 1,
           additionalNotes: "",
           categoryId: "",
-          locationName: "",
-          locationAddress: "",
           displayDate: false,
           displayLocation: false,
+          address: "",
+          latitude: null,
+          longitude: null,
           isSuccess: true
         })
 
@@ -250,20 +251,7 @@ export default function ReservationForm() {
             </>
           )}
 
-          {formData.displayLocation && (
-            <div className="space-y-2">
-              <Label htmlFor="locationAddress">Location Address</Label>
-              <Input
-                id="locationAddress"
-                name="locationAddress"
-                value={formData.locationAddress}
-                onChange={handleChange}
-                placeholder="123 Studio St, City, Country"
-                className="focus-visible:ring-primary"
-                required
-              />
-            </div>
-          )}
+          {formData.displayLocation && <LocationAddress handleChange={handleChange} /> }
 
           <div className="space-y-2">
             <Label htmlFor="additionalNotes">Additional Notes</Label>
