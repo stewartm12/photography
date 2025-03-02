@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, Fragment } from "react"
-import { useRouter, usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { Menu, ChevronDown } from 'lucide-react'
 import Link from "next/link"
 import Image from "next/image"
@@ -75,15 +75,11 @@ export function Navbar() {
               item.hasSubmenu ? (
                 <DropdownMenu key={item.name}>
                   <DropdownMenuTrigger
-                    className={`flex items-center transition-colors hover:text-foreground/80 ${pathname === item.href ? "underline" : ""}`}
+                    className={`flex items-center cursor-pointer transition-colors hover:text-foreground/80 ${pathname === item.href ? "underline" : ""}`}
                   >
                     {item.name} <ChevronDown className="ml-1 h-4 w-4" />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="start" className="w-56">
-                    <Link href={item.href} className="w-full">
-                      <DropdownMenuItem className="cursor-pointer">All Galleries</DropdownMenuItem>
-                    </Link>
-                    <Separator className="my-1" />
                     {item.submenu?.map((subItem) => (
                       <Link key={subItem.name} href={subItem.href} className="w-full">
                         <DropdownMenuItem className="cursor-pointer">{subItem.name}</DropdownMenuItem>

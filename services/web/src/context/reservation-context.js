@@ -26,8 +26,9 @@ export function ReservationProvider({ children, categories }) {
     numberOfParticipants: 1,
     additionalNotes: "",
     categoryId: "",
-    locationName: "",
-    locationAddress: "",
+    address: "",
+    latitude: null,
+    longitude: null,
     serviceDetails: null
   });
 
