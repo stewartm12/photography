@@ -1,9 +1,10 @@
 class Photo < ApplicationRecord
-  belongs_to :category
-
+  belongs_to :collection
+  # has_one :category, foreign_key: 'featured_photo_id'
   has_one_attached :image
 
-  validates :file_key, :category, presence: true
+  validates :file_key, :collection, presence: true
+  validates :featured_photo_id, uniqueness: true
 
   before_create :set_highlighted_position, if: :highlighted?
 

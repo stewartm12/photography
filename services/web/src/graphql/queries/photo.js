@@ -10,7 +10,7 @@ export async function getHighlightedPhotos() {
         photos {
           id
           fileKey
-          category {
+          collection {
             name
           }
         }
