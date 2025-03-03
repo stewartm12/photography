@@ -5,5 +5,7 @@ module Types
     field :description, String
     field :photos, [Types::PhotoType]
     field :reservations, [Types::ReservationType]
+    field :featured_photo, Types::PhotoType
+    field :collections, [Types::CollectionType]
   end
 end

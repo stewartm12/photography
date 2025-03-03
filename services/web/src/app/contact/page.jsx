@@ -31,7 +31,6 @@ export default async function Contact() {
                 className="object-cover"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
-                priority
                 alt="Victoria Gonzales Photography"
               />
             </div>

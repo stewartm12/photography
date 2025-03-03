@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_28_200335) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_03_215425) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -47,7 +47,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_28_200335) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "featured_photo_id"
+    t.index ["featured_photo_id"], name: "index_categories_on_featured_photo_id"
     t.index ["name"], name: "index_categories_on_name", unique: true
+  end
+
+  create_table "collections", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_collections_on_category_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -61,12 +71,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_28_200335) do
 
   create_table "photos", force: :cascade do |t|
     t.string "file_key"
-    t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "highlighted", default: false
     t.integer "highlighted_order"
-    t.index ["category_id"], name: "index_photos_on_category_id"
+    t.bigint "collection_id"
+    t.index ["collection_id"], name: "index_photos_on_collection_id"
     t.index ["file_key"], name: "index_photos_on_file_key", unique: true
     t.index ["highlighted"], name: "index_photos_on_highlighted"
   end
@@ -96,7 +106,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_28_200335) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "photos", "categories"
+  add_foreign_key "categories", "photos", column: "featured_photo_id"
   add_foreign_key "reservation_locations", "locations"
   add_foreign_key "reservation_locations", "reservations"
   add_foreign_key "reservations", "categories"

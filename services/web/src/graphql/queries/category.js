@@ -58,7 +58,14 @@ export async function getPhotosByCategory(urlSegment) {
         categories(name: $categoryName) {
           id
           name
-          photos {
+          collections {
+            name
+            photos {
+              id
+              fileKey
+            }
+          }
+          featuredPhoto {
             id
             fileKey
           }
