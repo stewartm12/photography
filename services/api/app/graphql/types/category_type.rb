@@ -7,5 +7,7 @@ module Types
     field :reservations, [Types::ReservationType]
     field :featured_photo, Types::PhotoType
     field :collections, [Types::CollectionType]
+    field :packages, [Types::PackageType], null: true
+    field :addons, [Types::AddonType], null: true
   end
 end

@@ -27,7 +27,7 @@ export default async function Contact() {
           <div className="flex justify-center justify-self-center w-full">
             <div className="relative aspect-[3/4] w-[85%] max-h-full rounded-lg overflow-hidden shadow-2xl transform transition-transform hover:scale-[1.01]">
               <Image
-                src={`https://${process.env.NEXT_PUBLIC_AWS_BUCKET_NAME}.s3.${process.env.NEXT_PUBLIC_AWS_REGION}.amazonaws.com/candle-product-1.jpg`}
+                src='/Damla-Selen-Demir-1.jpg'
                 className="object-cover"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"

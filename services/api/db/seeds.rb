@@ -8,4 +8,11 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-Dir[Rails.root.join('db', 'seeds', '*.rb')].each { |file| load file }
+# Load category_seeds.rb first
+load Rails.root.join('db', 'seeds', 'category_seeds.rb')
+
+# Load the rest of the seed files (excluding category_seeds.rb since it's already loaded)
+Dir[Rails.root.join('db', 'seeds', '*.rb')].each do |file|
+  next if file.include?('category_seeds.rb') # Skip category_seeds.rb to avoid running it twice
+  load file
+end

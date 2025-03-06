@@ -23,7 +23,6 @@ export const metadata = {
     "Photo Gallery",
     "Portrait Photography",
     "Event Photography",
-    "Sport Photography",
     "Graduation & Senior Portraits",
     "Pet & Animal Photography",
     "Corporate & Commercial Photography",
