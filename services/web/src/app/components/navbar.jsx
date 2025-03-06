@@ -35,7 +35,6 @@ const galleryCategories = [
   { name: "Product Photography", href: "/galleries/product-photography" },
   { name: "Pet & Animal Photography", href: "/galleries/pet-and-animal-photography" },
   { name: "Graduation & Senior Portraits", href: "/galleries/graduation-and-senior-portraits" },
-  { name: "Sport Photography", href: "/galleries/sport-photography" }
 ]
 
 const navItems = [
@@ -63,10 +62,10 @@ export function Navbar() {
   return (
     <nav className="flex items-center justify-between h-16 px-4 border-b border-stone-800 shadow-md">
       <Link href="/" className="mr-6 flex items-center space-x-2">
-        <Image src="/picsbytori-logo.jpg" width={50} height={50} alt="pics by tory logo" className="w-full h-full border-b border-stone-800" priority/>
+        <Image src="/picsbytori-logo.jpg" width={50} height={50} alt="pics by tori logo" className="w-full h-full border-b border-stone-800" priority/>
       </Link>
         <h1 className="hidden sm:block font-extrabold tracking-wider text-center text-transparent bg-clip-text bg-gradient-to-r from-stone-800 to-stone-700 text-2xl md:text-3xl drop-shadow-md">
-          Photography by Tori
+          Victoria's Photography
         </h1>
       <div className="flex items-center justify-end">
         <div className="mr-4 hidden md:flex">
@@ -110,7 +109,7 @@ export function Navbar() {
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]" aria-describedby={undefined}>
                 <SheetHeader>
-                  <SheetTitle>Pics by Tori</SheetTitle>
+                  <SheetTitle>Victoria's Photography</SheetTitle>
                   <SheetDescription>Navigation Menu</SheetDescription>
                 </SheetHeader>
                 <nav className="flex flex-col gap-4 mt-6">
@@ -123,7 +122,7 @@ export function Navbar() {
                           className="w-full"
                         >
                           <CollapsibleTrigger asChild>
-                            <Button variant="ghost" className="w-full justify-between px-2">
+                            <Button variant="ghost" className="w-full justify-between px-2 text-lg font-normal">
                               {item.name}
                               <ChevronDown
                                 className={`h-4 w-4 transition-transform ${openCollapsible === item.name ? "rotate-180" : ""}`}
@@ -131,13 +130,6 @@ export function Navbar() {
                             </Button>
                           </CollapsibleTrigger>
                           <CollapsibleContent className="pl-4 space-y-2 mt-2">
-                            <Link
-                              href={item.href}
-                              className="block px-2 py-1 text-base"
-                              onClick={() => setIsOpen(false)}
-                            >
-                              All Galleries
-                            </Link>
                             {item.submenu?.map((subItem) => (
                               <Link
                                 key={subItem.name}

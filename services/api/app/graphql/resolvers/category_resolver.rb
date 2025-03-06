@@ -8,7 +8,7 @@ module Resolvers
       if name
         Category.where('name LIKE ?', "%#{name}%")
       else
-        Category.all
+        Category.all.order(:id)
       end
     end
   end

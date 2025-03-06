@@ -8,7 +8,6 @@ export const CORPORATE_AND_COMMERCIAL_CATEGORY = "Corporate & Commercial Photogr
 export const PRODUCT_CATEGORY = "Product Photography";
 export const PET_AND_ANIMAL_CATEGORY = "Pet & Animal Photography";
 export const GRADUATION_AND_SENIOR_CATEGORY = "Graduation & Senior Portraits";
-export const SPORT_CATEGORY = "Sport Photography";
 
 const ReservationContext = createContext();
 

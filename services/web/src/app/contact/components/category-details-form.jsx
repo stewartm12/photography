@@ -4,7 +4,7 @@ import GraduationSeniorForm from "./category-type-forms/graduation-senior-form";
 import IndividualFamilyForm from "./category-type-forms/individual-family-form";
 import PetAnimalForm from "./category-type-forms/pet-animal-form";
 import ProductForm from "./category-type-forms/product-form";
-import SportForm from "./category-type-forms/sport-form";
+
 import {
   useReservation,
   INDIVIDUAL_AND_FAMILY_CATEGORY,
@@ -12,8 +12,7 @@ import {
   CORPORATE_AND_COMMERCIAL_CATEGORY,
   PRODUCT_CATEGORY,
   PET_AND_ANIMAL_CATEGORY,
-  GRADUATION_AND_SENIOR_CATEGORY,
-  SPORT_CATEGORY
+  GRADUATION_AND_SENIOR_CATEGORY
 } from "@/context/reservation-context";
 
 export default function CategoryDetailsForm() {
@@ -35,8 +34,6 @@ export default function CategoryDetailsForm() {
       return <PetAnimalForm />;
     case GRADUATION_AND_SENIOR_CATEGORY:
       return <GraduationSeniorForm />;
-    case SPORT_CATEGORY:
-      return <SportForm />;
     default:
       return null;
   }

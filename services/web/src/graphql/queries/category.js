@@ -7,8 +7,7 @@ const galleryCategoryMap = {
   "corporate-and-commercial-photography": "Corporate & Commercial Photography",
   "product-photography": "Product Photography",
   "pet-and-animal-photography": "Pet & Animal Photography",
-  "graduation-and-senior-portraits": "Graduation & Senior Portraits",
-  "sport-photography": "Sport Photography"
+  "graduation-and-senior-portraits": "Graduation & Senior Portraits"
 };
 
 
@@ -73,6 +72,41 @@ export async function getPhotosByCategory(urlSegment) {
       }
     `,
     variables: { categoryName },
+  });
+
+  return response.data;
+}
+
+export async function getPackageInfo() {
+  const client = getClient();
+
+  const response = await client.query({
+    query: gql`
+      query getPhotosByCategory {
+        categories {
+          id
+          name
+          description
+          featuredPhoto {
+            id
+            fileKey
+          }
+          packages {
+            id
+            name
+            price
+            popular
+            duration
+            features
+          }
+          addons {
+            id
+            name
+            price
+          }
+        }
+      }
+    `
   });
 
   return response.data;
